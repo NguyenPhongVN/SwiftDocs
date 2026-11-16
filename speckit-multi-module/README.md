@@ -91,7 +91,8 @@ Kit mã hóa các quy ước isowords đang dùng thật:
 
 ## Tùy chỉnh cho dự án khác
 
-Kit mặc định cho **Swift 5.9+ / SwiftPM / TCA 1.x / iOS**. Nếu dự án đích khác stack,
+Kit mặc định cho **Swift 6.4+ / SwiftPM / TCA 1.26+ / iOS** (khớp baseline đã verify ở
+README root: TCA 1.26.2, swift-tools 6.4). Nếu dự án đích khác stack,
 giữ nguyên khung flow nhưng:
 
 - sửa bảng **Technical Context** trong `plan-template.md`;

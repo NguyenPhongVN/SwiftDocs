@@ -124,6 +124,8 @@ Reactions are lightweight social signals. Humans use them constantly — they sa
 
 Skills provide your tools. When you need one, check its `SKILL.md`. Keep local notes (camera names, SSH details, voice preferences) in `TOOLS.md`.
 
+**Prompt templates:** reusable review/implementation prompts live in [`Prompt/`](Prompt/README.md) — fill the `{{...}}` placeholders per project and paste at session start (index: `Prompt/README.md`).
+
 **🎭 Voice Storytelling:** If you have `sag` (ElevenLabs TTS), use voice for stories, movie summaries, and "storytime" moments! Way more engaging than walls of text. Surprise people with funny voices.
 
 **📝 Platform Formatting:**
@@ -214,7 +216,3 @@ The goal: Be helpful without being annoying. Check in a few times a day, do usef
 ## Make It Yours
 
 This is a starting point. Add your own conventions, style, and rules as you figure out what works.
-
-## Related
-
-- [Default AGENTS.md](/reference/AGENTS.default)

@@ -3,7 +3,7 @@
 > A knowledge base for **Swift** development and app development across the **Apple** ecosystem — written for both human developers and AI coding agents.
 
 - Repository: [NguyenPhongVN/SwiftDocs](https://github.com/NguyenPhongVN/SwiftDocs)
-- Documentation language: English (technical terms are kept in their original form — see [Documentation Language Conventions](#-documentation-language-conventions))
+- Documentation language: English for technical & agent-facing docs · Vietnamese for prompt templates & operational notes (see [Documentation Language Conventions](#-documentation-language-conventions))
 - Technical data last verified: **September 22, 2026** — methodology and sources listed in [Verified Sources](#-verified-sources)
 
 **Notation:** ✅ recommended / verified · ⚠️ use with caution · ⛔ do not do this
@@ -15,7 +15,9 @@
 | Path | Contents |
 | --- | --- |
 | [`TCA-SwiftUI-Agent-Guide.md`](./TCA-SwiftUI-Agent-Guide.md) | In-depth guide to The Composable Architecture (TCA) + SwiftUI: API surface, composition rules, navigation, testing, the API status matrix, and review checklists |
-| `projects/` | Folder for Swift projects (currently empty) |
+| [`speckit-multi-module/`](./speckit-multi-module/) | Reusable spec-kit: the `/speckit-*` spec-driven flow + isowords-style multi-module architecture reference (`ARCHITECTURE.md`, constitution, templates, scripts) |
+| [`Prompt/`](./Prompt/) | Library of reusable AI-agent prompt templates for iOS development — read-only review passes and agentic workflows; index in [`Prompt/README.md`](./Prompt/README.md) |
+| Agent workspace (`AGENTS.md`, `SOUL.md`, `USER.md`, `IDENTITY.md`, `TOOLS.md`, `HEARTBEAT.md`, `memory/`) | Operational instructions and notes for the AI agent that maintains this repository |
 
 ---
 
@@ -110,11 +112,12 @@ The minimum deployment targets are **as declared in TCA 1.26.2's manifest** (ver
 
 Documentation in this repository follows these rules:
 
-1. **Explain in English**, keeping technical terms in their original form (Reducer, Effect, Store, Dependency, State…) — never translate them halfway.
-2. Spell proper names with their exact canonical casing: `SwiftUI`, `UIKit`, `Xcode`, `The Composable Architecture`.
-3. Code blocks keep the original English API; comments inside code are written in English.
-4. Status notation is used consistently: ✅ recommended/verified · ⚠️ use with caution · ⛔ do not do this.
-5. Every version number must be traceable to a source in [Verified Sources](#-verified-sources).
+1. **Technical & agent-facing docs are written in English** (this README, `TCA-SwiftUI-Agent-Guide.md`, `speckit-multi-module/ARCHITECTURE.md`, `.specify/` templates) — keeping technical terms in their original form (Reducer, Effect, Store, Dependency, State…) — never translate them halfway.
+2. **Prompt templates and operational notes are written in Vietnamese** (`Prompt/` templates, `speckit-multi-module/README.md`, `memory/` notes) — the human-facing layer; code identifiers and API names stay in English inside them.
+3. Spell proper names with their exact canonical casing: `SwiftUI`, `UIKit`, `Xcode`, `iOS`, `The Composable Architecture`.
+4. Code blocks keep the original English API; comments inside code are written in English.
+5. Status notation is used consistently: ✅ recommended/verified · ⚠️ use with caution · ⛔ do not do this.
+6. Every version number must be traceable to a source in [Verified Sources](#-verified-sources).
 
 ---
 
@@ -134,9 +137,11 @@ The quality bar for Swift code produced in this project (full version in the gui
 
 ## 🤖 For AI coding agents
 
-1. Read [`TCA-SwiftUI-Agent-Guide.md`](./TCA-SwiftUI-Agent-Guide.md) before touching TCA code — start with the §0 table (situation → sections to read) and §17 (definition of done).
-2. Prefer the "current" column of the API matrix in §15; ⛔ never emit "legacy" APIs.
-3. Always verify with real builds/tests and record the evidence before handing work back.
+1. Start from [`AGENTS.md`](./AGENTS.md) — the operational instructions loaded at session start.
+2. Read [`TCA-SwiftUI-Agent-Guide.md`](./TCA-SwiftUI-Agent-Guide.md) before touching TCA code — start with the §0 table (situation → sections to read) and §17 (definition of done).
+3. For review passes and agentic workflows, use the ready-made templates in [`Prompt/`](./Prompt/README.md) — fill the `{{...}}` placeholders per project.
+4. Prefer the "current" column of the API matrix in §15; ⛔ never emit "legacy" APIs.
+5. Always verify with real builds/tests and record the evidence before handing work back.
 
 ---
 

@@ -98,7 +98,9 @@ import SwiftUI
   public init() {}
 
   // Presented child features, enumerated as a Destination.
-  @Reducer(state: .equatable)
+  // NOTE: @Reducer(state: .equatable, …) macro options are hard-deprecated since 1.23 —
+  // declare conformances in an extension instead (see TCA guide §5).
+  @Reducer
   public enum Destination {
     case changelog(Changelog)
     case leaderboard(Leaderboard)
@@ -106,7 +108,7 @@ import SwiftUI
 
   @ObservableState
   public struct State: Equatable {
-    public var destination: Destination.State?
+    @Presents public var destination: Destination.State?
     // …feature state
     public init() {}
   }
@@ -131,6 +133,9 @@ import SwiftUI
 
   private func core(state: inout State, action: Action) -> Effect<Action> { … }
 }
+
+// Same file as the declaration so the compiler can synthesize `==`.
+extension Home.Destination.State: Equatable {}
 
 public struct HomeView: View {
   @Bindable var store: StoreOf<Home>
@@ -186,12 +191,12 @@ buildable in previews and testable without the real backend.
 ## 5. Package.swift conventions
 
 ```swift
-// swift-tools-version: 5.9
+// swift-tools-version: 6.4
 let package = Package(
   name: "MyApp",
   platforms: [.iOS(.v17)],
   dependencies: [
-    .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "1.12.0"),
+    .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "1.26.0"),
   ],
   targets: [
     // MARK: - shared

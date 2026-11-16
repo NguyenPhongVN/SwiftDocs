@@ -12,7 +12,7 @@ this plan — do not delete those sections.
 
 ## Technical Context
 
-**Language/Version**: Swift 5.9+ (swift-tools-version 5.9)
+**Language/Version**: Swift 6.4+ (swift-tools-version 6.4)
 **Primary dependencies**: [Composable Architecture (TCA) 1.x, swift-dependencies, swift-custom-dump, swift-snapshot-testing — adjust to the project]
 **Storage**: [if applicable — else N/A]
 **Testing**: [XCTest + swift-snapshot-testing, run via `swift test` / `xcodebuild test`]

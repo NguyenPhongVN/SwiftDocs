@@ -766,12 +766,24 @@ struct CounterFeatureTests {
   func increment() async {
     let store = TestStore(initialState: CounterFeature.State()) {
       CounterFeature()
+    }
+
+    await store.send(.incrementButtonTapped) { $0.count = 1 }   // no effect → nothing to receive
+  }
+
+  @Test
+  func fact() async {
+    let store = TestStore(initialState: CounterFeature.State()) {
+      CounterFeature()
     } withDependencies: {
       $0.numberFact.fetch = { "\($0) is a good number" }
     }
 
-    await store.send(.incrementButtonTapped) { $0.count = 1 }
-    await store.receive(\.factResponse) { $0.fact = "1 is a good number" }
+    await store.send(.factButtonTapped) { $0.isLoading = true }
+    await store.receive(\.factResponse) {
+      $0.isLoading = false
+      $0.fact = "0 is a good number"                            // fetch(count) with the initial count 0
+    }
   }
 }
 ```
@@ -899,7 +911,8 @@ deprecated surface, so new code should never depend on it.
 - Rendered docs: https://pointfreeco.github.io/swift-composable-architecture/
 - Point-Free video collection: https://www.pointfree.co/collections/composable-architecture
 - Companion packages: `swift-dependencies`, `swift-case-paths`, `swift-clocks`, `swift-sharing`,
-  `swift-identified-collections`, `swift-observation` (Perception).
+  `swift-identified-collections`, `swift-perception` (provides the `Perception` module — note there
+  is no repository named `swift-observation`, see the README warning).
 
 *Provenance note: content assembled from the upstream repository at `main` plus GitHub release
 metadata on 2026-09-22. Version numbers, deprecation stages and API spellings change; re-verify §15

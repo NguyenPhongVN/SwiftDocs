@@ -9,10 +9,13 @@ Templates status:
   ✅ .specify/templates/tasks-template.md  — Setup phase includes module scaffolding tasks
 Follow-up TODOs:
   - Replace [PROJECT_NAME] with the real project name on adoption (README step 3).
+Amendments:
+  1.0.0 → 1.0.1 (2026-11-17): PATCH — clarified access-level vocabulary in Principle VII;
+  fixed governance field name (LAST_AMENDED → "Last Amended").
 -->
 # [PROJECT_NAME] Constitution — Multi-Module Swift Architecture
 
-**Version**: 1.0.0 | **Ratified**: 2026-11-02 | **Last Amended**: 2026-11-02
+**Version**: 1.0.1 | **Ratified**: 2026-11-02 | **Last Amended**: 2026-11-17
 
 ## Preamble
 
@@ -98,7 +101,7 @@ get isolated and iterations stay fast.
 
 The module boundary is the API boundary. Everything a consumer needs is `public`
 (reducer, `State`, `Action`, view, client interface); everything else is
-`private`/`fileinternal`. Cross-module reach into another module's internals is
+`internal`/`fileprivate`/`private`. Cross-module reach into another module's internals is
 forbidden; adding public surface requires justification.
 
 **Rationale**: SwiftPM enforces nothing beyond `public`; discipline here is what keeps
@@ -125,8 +128,8 @@ layer map greppable and keep the server/tooling build decoupled from iOS-only co
 - Amendments follow semantic versioning: MAJOR for removing/redefining a principle,
   MINOR for adding a principle or materially expanding guidance, PATCH for
   clarifications. Record the change in a Sync Impact Report comment at the top of this
-  file and update `LAST_AMENDED`.
+  file and update the **Last Amended** date.
 - Compliance is reviewed during `/speckit-analyze` and code review; recurring violations
   are constitution bugs — fix the principle or the practice, not just the instance.
 
-**Version**: 1.0.0
+**Version**: 1.0.1
